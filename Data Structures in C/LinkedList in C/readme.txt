@@ -1,1 +1,1 @@
-Took a OO approach to the C code.
+A OO approach to a C coded LL.
