@@ -6,7 +6,7 @@ struct ll {
 	struct ll* next;
 };
 
-LinkedList newLinkedList(int v){
+LinkedList newLinkedList(){
 	LinkedList head = NULL;
 	return head;
 }
