@@ -34,29 +34,22 @@ Note that the left child of all nodes should be NULL.
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
- 
- 
-TreeNode* Solution::flatten(TreeNode* root) 
-{
+
+
+TreeNode* Solution::flatten(TreeNode* root) {
     if(!root)
         return NULL;
     TreeNode* node = root;
-    while(node) 
-    {
-        // Attatches the right sub-tree to the rightmost leaf of the left sub-tree:
-        if (node->left) 
-        {
+    while(node) {
+        if (node->left) {
             TreeNode *rightMost = node->left;
-            while (rightMost->right) 
+            while (rightMost->right)
                 rightMost = rightMost->right;
             rightMost->right = node->right;
-            // Makes the left sub-tree to the right sub-tree:
             node->right = node->left;
             node->left = NULL;
         }
-            // Flatten the rest of the tree:
             node = node->right;
-    }     
+    }
     return root;
-    
 }

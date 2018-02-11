@@ -18,7 +18,7 @@ void printTable(vector< vector< int> > table) {
   }
   cout<<"]"<<endl;
 }
-
+//allow inclusion once
 int knapsack(int W,int* value,int* weight,int s) {
 
   vector<vector<int> >table(s+1,vector<int>(W+1,0));
@@ -37,6 +37,25 @@ int knapsack(int W,int* value,int* weight,int s) {
     }
   }
 
+  cout<<endl;
+  printTable(table);
+  return table[s][W];
+
+}
+
+int knapsack_multi(const int& W, const int* value, const int* weight, const int& s) {
+
+  vector<vector<int> >table(s+1,vector<int>(W+1,0));
+  for(int i = 1; i<=W;i++) {
+     for(int j = 1; j<=s;j++) {
+       if(weight[j-1] <= i)
+          table[j][i] = max( (value[j-1] + table[j-1][i-weight[j-1]]), table[j-1][i] );
+       else
+          table[j][i] = table[j-1][i];
+     }
+  }
+
+  cout<<endl;
   printTable(table);
   return table[s][W];
 
@@ -44,14 +63,15 @@ int knapsack(int W,int* value,int* weight,int s) {
 
 int main() {
 
-  int W = 13;
-  int value[] = {5,15,21,30};
-  int weight[] = {3,4,8,10};
+  int W = 50;
+  int value[] = {5,15,20,30};
+  int weight[] = {2,5,8,10};
   int s = (sizeof(value)/sizeof(value[0]));
 
   int sol = knapsack(W,value,weight,s);
+  int sol_multi = knapsack_multi(W,value,weight,s);
 
   cout<<"The solution is: "<<sol<<endl;
-
+  cout<<"The inclusive solution is: "<<sol_multi<<endl;
   return 0;
 }
