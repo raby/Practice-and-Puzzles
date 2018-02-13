@@ -16,11 +16,12 @@ void printTable(vector< vector< int> > table) {
 }
 
 int count(int n) {
-  int m = 3;
+  int m = 4;
   vector<int> S (m);
   S[0] = 1;
-  S[1] = 2;
-  S[2] = 5;
+  S[1] = 5;
+  S[2] = 10;
+  S[3] = 25;
 
   int i, j, x, y;
   vector<vector<int> > table(n+1,vector<int>(m,0));
@@ -39,7 +40,7 @@ int count(int n) {
 
 
 int main() {
-  int n = 10;
+  int n = 100;
   int ans = count(n);
   cout<<"The solution is: "<<ans<<endl;
 }

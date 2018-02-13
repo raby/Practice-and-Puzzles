@@ -14,7 +14,7 @@ for each edge (u,v)
  for k from 1 to |V|
     for i from 1 to |V|
        for j from 1 to |V|
-          if dist[i][j] > dist[i][k] + dist[k][j] 
+          if dist[i][j] > dist[i][k] + dist[k][j]
              dist[i][j] = dist[i][k] + dist[k][j]
          end if
 */
@@ -33,7 +33,7 @@ int add( int a, int b)
 }
 
 int main(int argc, char *argv[]) {
-   
+
    int v = *argv[1]-'0';
    int i,j,k;
 
@@ -56,7 +56,7 @@ int main(int argc, char *argv[]) {
  	  scanf("%d",&j);
  	  printf("Assign a positive or negative value as the cost of the edge.\n");
  	  scanf("%d",&k);
- 	  
+
  	  if(i==-1 || j==-1)
  	  	break;
 
@@ -65,7 +65,7 @@ int main(int argc, char *argv[]) {
  	  else
  	  	graph[i][j] = k;
    }
- 	
+
    for(i=0;i<v;i++)
    	for(j=0;j<v;j++)
    		dist[i][j] = INT_MAX;

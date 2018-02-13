@@ -41,7 +41,7 @@ class bt {
    }
    void bt_right_print() {
      cout<<"Printing tree by right node: "<<endl;
-     node* t = root;
+     node* t = root->r; //start at the end of the list
      node* s = t;
      cout<<t->v<<" ";
      t = t->r;
@@ -79,26 +79,39 @@ class bt {
      node* w = root;
      node* ms = NULL;
      node* mf = NULL;
-     while(w) {
+     while(w) { //flatten
       if(w->r) {
         ms = w->r;
         mf = w->r;
-        while(mf->l) {
+        while(mf->l) { //the left most node to the right of the walker
           mf = mf->l;
         }
         mf->l = w;
-        if(wp) {
+        if(wp) { //case: traversing middle of left branch
           wp->l = ms;
         }
-        else if(!wp) {
+        else if(!wp) { //case: right side of root
           root = ms;
         }
         w->r = NULL;
         w = ms;
       }
-      wp = w;
-      w = w->l;
+      else {
+        wp = w;
+        w = w->l;
+      }
      }
+     wp = NULL;
+     w = root;
+     while(w) {//link double circular
+       if(wp) {
+         w->r = wp;
+       }
+       wp = w;
+       w = w->l;
+     }
+     wp->l = root;
+     root->r = wp;
    }
 };
 
@@ -117,6 +130,7 @@ int main() {
   b.add(17);
   b.bt_rec_print();
   b.flatten2dll();
-  b.bt_rec_print();
+  b.bt_left_print();
+  b.bt_right_print();
   return 0;
 }

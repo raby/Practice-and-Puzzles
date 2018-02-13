@@ -63,9 +63,9 @@ int knapsack_multi(const int& W, const int* value, const int* weight, const int&
 
 int main() {
 
-  int W = 50;
-  int value[] = {5,15,20,30};
-  int weight[] = {2,5,8,10};
+  int W = 9;
+  int value[] = {5,8,7,15};
+  int weight[] = {1,2,3,5};
   int s = (sizeof(value)/sizeof(value[0]));
 
   int sol = knapsack(W,value,weight,s);
