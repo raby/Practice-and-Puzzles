@@ -1,0 +1,1 @@
+Taking an object oriented approach in a C to build a Stack and Queue, built by nodes containing values, previous, and next pointers.
